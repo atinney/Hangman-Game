@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 	 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <script type="text/javascript" src="assets/javascript/game.js"></script>
+	 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+
+	 	<div class="jumbotron">
+		    <h1 class="text-center">S.O.S.!!</h1>
+	    	<h3 class="text-center">Guess the word before the ship hits the iceberg!</h3>
+			<br>
+			<br>
+	    	<center><button id="button-clear" class="btn btn-default text-center clear" value="clear"><h4>Start a new game!</h4></button></center>
+	 	</div>
+
+	<div class="container">
+
+		<!-- Wrong guesses get stored here --> 
+	    <div class="col-lg-4">
+	        <div class="panel panel-default">
+
+	          <div class="panel-heading">
+	            <h3 class="panel-title">Wrong guesses: <span id="wrong-guesses-counter">0</span> out of 10.</h3>
+	          </div>
+
+	          <div id="wrong-guesses" class="panel-body">
+	          </div>
+	      	</div>
+	  	 </div>
+
+	    <!-- Secret word gets stored here --> 
+	    <div class="col-lg-6">
+	        <div class="panel panel-default">
+
+	          <div class="panel-heading">
+	            <h3 class="panel-title">Your word</h3>
+	          </div>
+
+	          <div id="secret-word" class="panel-body">
+	          </div>
+	      	</div>
+	  	 </div>
+	
+	</div>
+
+
+
+
+</body>
+
+</html>

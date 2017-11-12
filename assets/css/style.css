@@ -1,0 +1,17 @@
+* {
+
+}
+
+body {
+	background-image: url("../../assets/images/anchors.jpg");
+
+}
+
+.panel {
+}
+
+.letter{
+	margin:auto;
+	float: left;
+	padding: 20px;
+}
