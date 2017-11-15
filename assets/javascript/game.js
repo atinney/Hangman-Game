@@ -1,7 +1,4 @@
 //left to do:
-//clear wrong guesses in-between games
-//handle duplicate letters
-//figure out how to tell when the user has won
 //make the wrong guesses move a boat towards an iceberg
 
 
@@ -9,8 +6,8 @@
 
 
       //Define the guessable words
-      var words = ["ocean","ship","helm","deck","sail","wind"];
- 
+      var words = ["ocean","ship","helm","deck","sail","wind","keel","rudder","captain"];
+      // var words = ["keel","rudder"]
 
       $("#button-clear").on("click", function reStart() {
 
@@ -20,9 +17,15 @@
             var guessedLettersArray = [];
             var guessesLimit = 10;
 
+            //Clears the divs in case there's anything in them
+           var secretWordDiv = document.getElementById("secret-word");
+           $(secretWordDiv).empty();
+
+           var secretWordDiv = document.getElementById("wrong-guesses");
+           $(secretWordDiv).empty();
 
             // Generate a random number between 0 and the length of the words array
-             var randomWordID =  Math.floor(Math.random()*(words.length-0+1)+0);
+             var randomWordID =  Math.floor(Math.random()*(words.length)+0);
 
             // Get the word that's at that index
             var chosenWord = words[randomWordID];
@@ -30,7 +33,10 @@
             // Get the length of that word
             var chosenWordLength = chosenWord.length;
 
-            // Turn that word into an array
+            // Also store the length into a variable to see if they've won. 
+            var hasWon = chosenWordLength;
+
+            // Turn the word into an array
             var chosenWordArray = chosenWord.split("");
 
             //Get the div to print to
@@ -47,7 +53,7 @@
                  blankLetter.innerHTML = "___";
 
                  //Test helper to print the word to the console
-                 // console.log(chosenWord[i]);
+                 console.log(chosenWord[i]);
 
                  //add a class of the letter # to the array to target later
                  blankLetter.setAttribute('id',i);
@@ -64,7 +70,6 @@
         var guessedLetter = String.fromCharCode(event.keyCode).toLowerCase();
 
 
-
         //check if letter was already guessed
         if (guessedLettersArray.indexOf(guessedLetter) != -1) {
             alert("You've already guessed that letter!");
@@ -77,11 +82,26 @@
           //store the guessed letter into a guessed letters array
           guessedLettersArray.push(guessedLetter);
 
-          //get the secret word div and update the hidden letter to display the guessed letter
-          var secretWordDiv = document.getElementById(chosenWordArray.indexOf(guessedLetter));
-          secretWordDiv.innerHTML = guessedLetter;
+          //get the secret word div and update all hidden letters display the guessed letter
+          for (i=0; i < chosenWordArray.length; i++) {
+            if (chosenWordArray[i] == guessedLetter) {
+                  var secretWordDiv = document.getElementById(i);
+                  secretWordDiv.innerHTML = guessedLetter;
+                  hasWon--;
 
-        }
+                  //check if user won
+                  if(hasWon==0){
+                        alert("You win! Press restart to start over.")
+                  }
+                 
+            }
+          }
+
+          //original code...doesn't handle duplicate letters
+          // var secretWordDiv = document.getElementById(chosenWordArray.indexOf(guessedLetter));
+          // secretWordDiv.innerHTML = guessedLetter;
+                       
+          }
 
         else {
             //increment the wrong guesses variable
@@ -108,7 +128,7 @@
             //append the new div to the existing div
             wrongGuessesDiv.appendChild(wrongGuessedLetter);
 
-           //take the contents of the current pointer in the array and put it in the new div 
+           //print out the wrongly guessed letter
            wrongGuessedLetter.innerHTML = guessedLetter;
 
         }
@@ -117,11 +137,12 @@
 
 
 
+
     });
 
+});
 
 
-      });
 
 
 
