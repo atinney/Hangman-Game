@@ -53,7 +53,7 @@
                  blankLetter.innerHTML = "___";
 
                  //Test helper to print the word to the console
-                 console.log(chosenWord[i]);
+                 // console.log(chosenWord[i]);
 
                  //add a class of the letter # to the array to target later
                  blankLetter.setAttribute('id',i);
